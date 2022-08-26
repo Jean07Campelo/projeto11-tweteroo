@@ -3,13 +3,10 @@ import cors from 'cors';
 
 const server = express();
 server.use(cors());
+server.use(express.json());
 const port = 5000;
 
-const dataUser = 
-{
-    "username": "Corvus",
-    "avatar": "https://cdn.download.ams.birds.cornell.edu/api/v1/asset/63739491/1800"
-};
+const dataUser = [];
 
 const tweetsUser = [
 {
@@ -17,5 +14,7 @@ const tweetsUser = [
     tweet: 'first post'
 },
 ];
+
+server.post('/sign-up', (req, res) => dataUser.push(req.body));
 
 server.listen(port, () => console.log(`Conectado na porta ${port}`));
