@@ -27,22 +27,24 @@ server.post("/sign-up", (req, res) => {
 });
 
 server.post("/tweets" , (req, res) => {
-  tweetsUser.push(req.body);
+  let nameUser = req.body.username;
+  let findAvatar = dataUsers.find((value) => value.username === nameUser);
+
+  const newTweet = 
+  {
+    username: nameUser,
+    tweet: req.body.tweet,
+    avatar: findAvatar
+  };
+
+  tweetsUser.push(newTweet);
   res.send('OK');  
 });
 
 server.get("/tweets", (req, res) => {
 
-  const tweets = 
-  {
-    username: dataUsers.username,
-    avatar: dataUsers.avatar,
-    tweet: 'teste back'
-  }
-
-  tweetsUser.push(tweets);
-  res.send(tweetsUser);
-
+  let lastTweets = tweetsUser.slice(-10);
+  res.send(lastTweets);
 });
 
 server.listen(port, () => console.log(`Conectado na porta ${port}`));
