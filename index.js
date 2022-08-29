@@ -17,7 +17,7 @@ const dataUsers = [
 const tweetsUser = [{ 
   username: "mutano", 
   tweet: "first tweet", 
-  avatar: dataUsers.avatar 
+  avatar: 'http://techjambo.com.br/wp-content/uploads/2021/11/Mutano-Jovens-Titas.png' 
 },
 ];
 
@@ -34,7 +34,7 @@ server.post("/tweets" , (req, res) => {
   {
     username: nameUser,
     tweet: req.body.tweet,
-    avatar: findAvatar
+    avatar: findAvatar.avatar
   };
 
   tweetsUser.push(newTweet);
